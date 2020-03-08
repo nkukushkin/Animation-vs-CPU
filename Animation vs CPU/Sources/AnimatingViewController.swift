@@ -3,11 +3,23 @@ import UIKit
 class AnimatingViewController: UIViewController {
     let animationDuration: TimeInterval = 30
 
-    @IBOutlet weak var rectangleView: UIView!
+    @IBOutlet var rectangleView: UIView!
 
     @IBAction func animate(_ sender: UIBarButtonItem) {
 //        animateWithBasicAnimation()
         animateWithUIViewAnimation()
+    }
+
+    @IBAction func removeRectangle(_ sender: UIButton) {
+        rectangleView.removeFromSuperview()
+    }
+
+    @IBAction func addRectangle(_ sender: UIButton) {
+        view.addSubview(rectangleView)
+        NSLayoutConstraint.activate([
+            rectangleView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
+            rectangleView.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor),
+        ])
     }
 
     // MARK: Lifecycle
@@ -36,10 +48,10 @@ class AnimatingViewController: UIViewController {
 // MARK: - UIView Animation
 
 extension AnimatingViewController {
-    // UIView animation will stop when the view controller disappears, calling the completion.
-    // If the animation repeats itself via completion, it will load the CPU with recursive calls
-    // while the view controller is hidden, because completions will be called instantly.
-    // When the view controller reappers the animations will start over.
+    // UIView animation will complete instantly, when the view is removed from the hierarchy.
+    //
+    // Note that we invoke this method recursively, this causes a high CPU load
+    // of instantly completing calls to UIView.animate(:) while the view is not in the hierarchy.
     func animateWithUIViewAnimation() {
         print(#function)
         UIView.animate(
@@ -57,8 +69,7 @@ extension AnimatingViewController {
 // MARK: - CABasicAnimation
 
 extension AnimatingViewController {
-    // CABasicAnimation will stop when when the view controller disappears
-    // and, if it’s supposed to repeat, will start over when it appears.
+    // CABasicAnimation will stop when when the view is removed from the hierarchy.
     func animateWithBasicAnimation() {
         print(#function)
         let animation = CABasicAnimation()

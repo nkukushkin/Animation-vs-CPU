@@ -23,11 +23,32 @@
                                     <constraint firstAttribute="width" constant="240" id="rIL-a4-eTR"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qdn-2q-fk3">
+                                <rect key="frame" x="145" y="96" width="124" height="68"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMO-8U-kvH">
+                                        <rect key="frame" x="0.0" y="0.0" width="124" height="30"/>
+                                        <state key="normal" title="Remove rectangle"/>
+                                        <connections>
+                                            <action selector="removeRectangle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tdh-Zp-14f"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlY-lC-tIR">
+                                        <rect key="frame" x="0.0" y="38" width="124" height="30"/>
+                                        <state key="normal" title="Add rectangle"/>
+                                        <connections>
+                                            <action selector="addRectangle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JP2-Uc-EdT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="7jW-V1-K0Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7SP-DR-YvS"/>
+                            <constraint firstItem="Qdn-2q-fk3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="SE5-l6-QXx"/>
                             <constraint firstItem="7jW-V1-K0Z" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="e0b-0H-p1z"/>
+                            <constraint firstItem="Qdn-2q-fk3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="faC-rr-4nH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -49,7 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="72" y="138"/>
+            <point key="canvasLocation" x="71.014492753623188" y="137.94642857142856"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="rWA-KZ-qjY">
